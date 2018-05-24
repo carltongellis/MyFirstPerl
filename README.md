@@ -1,2 +1,2 @@
 # MyFirstPerl
-Please read the ReadMeFirst.txt contained in the MyFirstPerl folder for instructions.
+Please read the ReadMeFirst.txt file contained in the MyFirstPerlPro folder for instructions.
