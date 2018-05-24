@@ -19,6 +19,7 @@ $(function(){
 
     //cancel form
     function CancelForm(evt){
+        $("#errorDisplay").text("");
         btnNew.text("NEW");
         btnCancel.hide();
         dataForm.hide();
