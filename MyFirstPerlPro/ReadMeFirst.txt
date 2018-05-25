@@ -3,7 +3,7 @@ My First Perl project
 Contents 
 'MyFirstPerlPro' folder
 -'pservice' folder
- --createdb.cgi - contains Database Script
+ --dbconn.pm - centralize database connection (contains database script)
  --getappt.cgi - fetch records service
  --saverec.cgi - save record service
  --plsqlite.db - SQLite database file
@@ -21,7 +21,7 @@ Steps to Deploy Project
 
 4. Line 1 of all cgi script contain location to Perl.exe, please update to match your environment.
 
-5. If the database file is corrupt or not available run 'createdb.cgi' to create database, to do this goto http://[server name]/cgi-bin/pservice/createdb.cgi
+5. Launch application, database will be created automatically. If there is a problem with the database please delete database file 'plsqlite.db' and run application again.
 
 6. To launch the application goto http://[server name]/perlproject/Home.html
 

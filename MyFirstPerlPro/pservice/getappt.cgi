@@ -3,7 +3,10 @@ use strict;
 use warnings;
 use JSON;
 use CGI;
-use DBI;
+
+use dbconn;
+#establish database connection
+my $dbh = dbconn::getconn;
 
 my $cgi = CGI->new();
 #set header
@@ -15,16 +18,8 @@ my $searchString = $cgi->param('searchString');
 #create whre clause
 if($searchString){  $searchString = "where desc like '%$searchString%'"; } else{$searchString = '';}
 
-#connect to database
-my $dbh = DBI->connect(          
-    "DBI:SQLite:dbname=plsqlite.db", 
-    "",                          
-    "",                          
-    { RaiseError => 1 },         
-) or die $DBI::errstr;
-
 #retrieve results from DB
-my $sth = $dbh->prepare( "SELECT * FROM Appointment $searchString" );  
+my $sth = $dbh->prepare( "SELECT apptTime, desc FROM Appointment $searchString" );  
 $sth->execute();
 
 my $JSONstring = '';

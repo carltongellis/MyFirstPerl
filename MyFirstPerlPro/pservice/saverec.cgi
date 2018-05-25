@@ -2,7 +2,8 @@
 use strict;
 use warnings;
 use CGI;
-use DBI;
+
+use dbconn;
 
 my $cgi = CGI->new();
 
@@ -10,14 +11,9 @@ my $cgi = CGI->new();
 my $txtDate = $cgi->param('txtDate') . ' ' . $cgi->param('txtTime') . ':00';
 my $txtDesc = $cgi->param('txtDesc');
 
-#connect to database
-my $dbh = DBI->connect(          
-    "DBI:SQLite:dbname=plsqlite.db", 
-    "",                          
-    "",                          
-    { RaiseError => 1 },         
-) or die $DBI::errstr;
-
+#establish database connection
+my $dbh = dbconn::getconn;
+#insert record
 $dbh->do("INSERT INTO Appointment(apptTime,desc) VALUES ( '$txtDate', '$txtDesc')");
 
 #Free up resources
